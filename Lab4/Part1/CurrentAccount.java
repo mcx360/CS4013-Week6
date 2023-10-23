@@ -2,57 +2,50 @@ package Lab4.Part1;
 import java.time.LocalDate;
 
 public class CurrentAccount extends BankAccount{
-    private double overDraftLimit=200;//expressed as number of dollars
-    private double balance;
+    private double overDraftLimit=200;//expressed as number of dollars, default overdraft limit is set to 200
+    //private double balance;
     private LocalDate dateCreated = getDateCreated();
-    private int id;
+    //private int id;
     private String accountName;
     
 
     //this makes overDraftLimit set to default which is 200 dollars
     public CurrentAccount(int id,double balance){
         super(id,balance);   
-        this.id=id;
-        this.balance=balance;
-        setBalance(balance);
+        //this.id=id;
+        //this.balance=balance;
+
     }
 
     
 
     public CurrentAccount(double balance, int id,String accountName){
         super(id,balance);
-        this.id=id;
-        this.balance=balance;
+        //this.id=id;
+        //this.balance=balance;
         this.accountName=accountName;
     }
 
     //can set a custom overdraft limit
-    public CurrentAccount(double balance, int id, double overDraftLimit){
+    public CurrentAccount(double balance, int id, String accountName,double overDraftLimit){
         super(id,balance);
-        this.id=id;
-        this.balance=balance;
-        this.overDraftLimit = overDraftLimit;
-    }
-
-    public CurrentAccount(double balance, int id, double overDraftLimit,String accountName){
-        super(id,balance);
-        this.id=id;
-        this.balance=balance;
+        //this.id=id;
+        //this.balance=balance;
         this.overDraftLimit = overDraftLimit;
         this.accountName = accountName;
     }
-
 
     
     
     @Override
     public void withdraw(double amount){
-        if((balance+overDraftLimit)-amount>=0){
-            balance-=amount;
+        if((getBalance()+overDraftLimit)-amount>=0){
+            //getBalance()-=amount;
+            setBalance(getBalance()-amount);
         }
         
         else{
-            System.out.println("Overdraft limit exceeded.");
+            //nothing happens as payment is declined
         }
         
     }
@@ -60,8 +53,8 @@ public class CurrentAccount extends BankAccount{
     @Override
     public String toString(){
         if(accountName!=null){
-            return accountName+"\nBalance: "+balance+"\nAccount Id: "+id+"\nDate created: "+dateCreated+"\nYour overdraft limit: "+overDraftLimit;
+            return accountName+"\nBalance: "+getBalance()+"\nAccount Id: "+getId()+"\nDate created: "+dateCreated+"\nYour overdraft limit: "+overDraftLimit;
         }
-        return "Balance: "+balance+"\nAccount Id: "+id+"\nDate created: "+dateCreated+"\nYour overdraft limit: "+overDraftLimit;
+        return "Balance: "+getBalance()+"\nAccount Id: "+getId()+"\nDate created: "+dateCreated+"\nYour overdraft limit: "+overDraftLimit;
     }
 }
