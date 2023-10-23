@@ -1,4 +1,4 @@
-package Lab4;
+package Lab4.Part1;
 import java.util.ArrayList;
 public class TestBankAccount {
     public static void main(String[] args) {
@@ -23,6 +23,8 @@ public class TestBankAccount {
         for(int i=0;i<michalAccounts.size();i++){
             System.out.println(michalAccounts.get(i).toString()+"\n");
         }
+
+        System.out.println(michalAccount.getBalance());
 
 
 

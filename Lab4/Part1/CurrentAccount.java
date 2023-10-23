@@ -1,4 +1,4 @@
-package Lab4;
+package Lab4.Part1;
 import java.time.LocalDate;
 
 public class CurrentAccount extends BankAccount{
@@ -7,13 +7,17 @@ public class CurrentAccount extends BankAccount{
     private LocalDate dateCreated = getDateCreated();
     private int id;
     private String accountName;
+    
 
     //this makes overDraftLimit set to default which is 200 dollars
-    public CurrentAccount(double balance, int id){
-        super(id,balance);
+    public CurrentAccount(int id,double balance){
+        super(id,balance);   
         this.id=id;
         this.balance=balance;
+        setBalance(balance);
     }
+
+    
 
     public CurrentAccount(double balance, int id,String accountName){
         super(id,balance);

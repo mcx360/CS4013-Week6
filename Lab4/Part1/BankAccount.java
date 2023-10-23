@@ -1,4 +1,4 @@
-package Lab4;
+package Lab4.Part1;
 import java.time.LocalDate;
 
 public class BankAccount {
